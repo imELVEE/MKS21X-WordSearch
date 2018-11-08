@@ -25,6 +25,30 @@ public class WordSearch{
     return grid;
   }
 
-  
+  public boolean addWordHorizontal(String word, int row, int col){
+    //if row doesn't exist
+    if (data.length < row || row < 0){
+      return false;
+    }
+
+    //if the word doesn't fit or col doesn't exist
+    if (data[row].length - col < word.length() || col < 0){
+      return false;
+    }
+
+    //check if the letters don't overlap
+    for (int e = col ; e < data[row].length ; e++){
+      if (data[row][e] != '_' && data[row][e] != word.charAt(e - col)){
+        return false;
+      }
+    }
+
+    //passed all fail cases
+    for (int e = col ; e < data[row].length ; e++){
+      data[row][e] = word.charAt(e - col);
+    }
+    return true;
+  }
+
 
 }
