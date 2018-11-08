@@ -37,18 +37,42 @@ public class WordSearch{
     }
 
     //check if the letters don't overlap
-    for (int e = col ; e < data[row].length ; e++){
+    for (int e = col ; e < data.length ; e++){
       if (data[row][e] != '_' && data[row][e] != word.charAt(e - col)){
         return false;
       }
     }
 
     //passed all fail cases
-    for (int e = col ; e < data[row].length ; e++){
+    for (int e = col ; e - col < word.length() ; e++){
       data[row][e] = word.charAt(e - col);
     }
     return true;
   }
 
+  public boolean addWordVertical(String word, int row, int col){
+    //if the word doesn't fit or row doesn't exist
+    if (data.length - row < word.length() || row < 0){
+      return false;
+    }
+
+    //if col doesn't exist
+    if (data[row].length < col || col < 0){
+      return false;
+    }
+
+    //check if the letters don't overlap
+    for (int r = row ; r < data.length ; r++){
+      if (data[r][col] != '_' && data[r][col] != word.charAt(r - row)){
+        return false;
+      }
+    }
+
+    //passed all fail cases
+    for (int r = row ; r - row < word.length() ; r++){
+      data[r][col] = word.charAt(r - row);
+    }
+    return true;
+  }
 
 }
