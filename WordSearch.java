@@ -87,13 +87,6 @@ public class WordSearch{
       return false;
     }
 
-    //check if the letters don't overlap
-    for (int e = col ; e < data.length ; e++){
-      if (data[row][e] != '_' && data[row][e] != word.charAt(e - col)){
-        return false;
-      }
-    }
-
     //Use the fail cases of addWordVertical
     //if the word doesn't fit or row doesn't exist
     if (data.length - row < word.length() || row < 0){
@@ -105,15 +98,18 @@ public class WordSearch{
       return false;
     }
 
+    //---
     //check if the letters don't overlap
-    for (int r = row ; r < data.length ; r++){
-      if (data[r][col] != '_' && data[r][col] != word.charAt(r - row)){
+    int e = col;
+    for (int r = row ; r < word.length() && e < word.length() ; r++){
+      if (data[r][e] != '_' && data[r][e] != word.charAt(r - row)){
         return false;
       }
+      e++;
     }
 
     //passed al fail casrs
-    int e = col;
+    e = col;
     for (int r = row ; r - row < word.length() ;){
       data[r][e] = word.charAt(r - row);
       e++;
