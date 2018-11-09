@@ -55,5 +55,28 @@ public class mydriver{
     System.out.println(testGrid.addWordVertical("chicken", 0, 15));
     System.out.println(testGrid);
 
+    //---
+
+    System.out.println("\n---\n//TESTING addWordDiagonal\n");
+
+    System.out.println("//Should print false because word is out of bounds");
+    System.out.println(testGrid.addWordDiagonal("chicken", 10, 14));
+    System.out.println(testGrid);
+
+    System.out.println("//Should print false because row does not exist");
+    System.out.println(testGrid.addWordDiagonal("chicken", -1, 13));
+    System.out.println(testGrid);
+
+    System.out.println("//Should print false because col does not exist");
+    System.out.println(testGrid.addWordDiagonal("chicken", 0, -1));
+    System.out.println(testGrid);
+
+    System.out.println("//Should print true because word is in bounds");
+    System.out.println(testGrid.addWordDiagonal("chicken", 0, 13));
+    System.out.println(testGrid);
+
+    System.out.println("//Should print false because letters do not overlap");
+    System.out.println(testGrid.addWordDiagonal("chicken", 0, 15));
+    System.out.println(testGrid);
   }
 }
