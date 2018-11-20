@@ -376,7 +376,7 @@ public class WordSearch{
     for (int i = 0 ; i < data.length ; i++){
       for (int e = 0 ; e < data[i].length ; e++){
         if (data[i][e] == ' '){
-          data[i][e] = (char)((int)'a' + Math.abs(inc.nextInt()%26));
+          data[i][e] = (char)((int)'A' + Math.abs(inc.nextInt()%26));
         }
       }
     }
@@ -432,7 +432,7 @@ public class WordSearch{
     System.out.println(grid);
     */
     for (int i = 0 ; i < wordsToAdd.size() ; i++){
-      if(grid.addWord(wordsToAdd.get(i))){
+      if(grid.addWord(wordsToAdd.get(i).toUpperCase())){
         //i++;
         wordsAdded.add(wordsToAdd.get(i));
       }
